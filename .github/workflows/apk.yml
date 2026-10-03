@@ -46,6 +46,7 @@ jobs:
             flutter pub get
             flutter analyze --no-fatal-infos --no-fatal-warnings lib || true
             flutter build apk --release \
+              --target-platform android-arm,android-arm64 \
               --dart-define=FIREBASE_API_KEY="$FIREBASE_API_KEY" \
               --dart-define=FIREBASE_PROJECT_ID="$FIREBASE_PROJECT_ID" \
               --dart-define=DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/latest/download/sipsak.apk"
