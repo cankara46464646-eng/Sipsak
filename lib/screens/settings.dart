@@ -63,6 +63,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               subtitle: 'Adın, arkadaşların seni bu adla görür',
               onTap: _rename,
             ),
+            if (Notifs.supported) ...[
             _Tile(
               icon: Icons.notifications_active_outlined,
               title: 'Bildirim izni ver',
@@ -79,6 +80,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
               subtitle: 'Şipşak bildirimi nasıl görünüyor?',
               onTap: Notifs.showTest,
             ),
+            ] else
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Panel(
+                  child: Text(
+                    'Web sürümündesin. Şipşak bildirimleri sunucu bağlanınca gelecek; o zamana kadar ana sayfadan takip et.',
+                    style: body(13, color: C.muted),
+                  ),
+                ),
+              ),
             if (app.isDemo)
               _Tile(
                 icon: Icons.restart_alt,

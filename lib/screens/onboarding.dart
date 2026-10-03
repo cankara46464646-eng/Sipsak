@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../services/app_state.dart';
@@ -99,6 +100,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               const SizedBox(height: 12),
               BigButton(label: 'Başla', icon: Icons.bolt, busy: _busy, onPressed: _valid ? _start : null),
+              if (kIsWeb) ...[
+                const SizedBox(height: 14),
+                Panel(
+                  child: Row(
+                    children: [
+                      const Icon(Icons.ios_share, color: C.flash, size: 22),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'iPhone\'da uygulama gibi kullanmak için: Safari\'de alttaki Paylaş butonu > Ana Ekrana Ekle.',
+                          style: body(13, color: C.muted),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
               if (app.isDemo) ...[
                 const SizedBox(height: 14),
                 Text(

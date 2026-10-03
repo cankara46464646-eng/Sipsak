@@ -275,7 +275,12 @@ class _CameraScreenState extends State<CameraScreen> with WidgetsBindingObserver
         else
           FittedBox(
             fit: BoxFit.cover,
-            child: SizedBox(width: size.height, height: size.width, child: CameraPreview(c)),
+            // Telefonda önizleme boyutu yatay gelir, web'de olduğu gibi gelir.
+            child: SizedBox(
+              width: kIsWeb ? size.width : size.height,
+              height: kIsWeb ? size.height : size.width,
+              child: CameraPreview(c),
+            ),
           ),
         IgnorePointer(child: CustomPaint(painter: _GridPainter())),
       ],

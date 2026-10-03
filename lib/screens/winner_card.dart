@@ -1,9 +1,7 @@
-import 'dart:io';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../clock.dart';
@@ -45,12 +43,10 @@ class _WinnerCardScreenState extends State<WinnerCardScreen> {
       final image = await boundary.toImage(pixelRatio: 1080 / boundary.size.width);
       final data = await image.toByteData(format: ui.ImageByteFormat.png);
       if (data == null) throw Exception('Kart oluşturulamadı');
-      final dir = await getTemporaryDirectory();
-      final file = File('${dir.path}/sipsak_gunun_karesi.png');
-      await file.writeAsBytes(data.buffer.asUint8List(), flush: true);
+      final bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await Share.shareXFiles(
-        [XFile(file.path, mimeType: 'image/png')],
-        text: 'Bugün Günün Karesi benim! Sen de grubunu kur: ${AppConfig.downloadUrl}',
+        [XFile.fromData(bytes, name: 'sipsak_gunun_karesi.png', mimeType: 'image/png')],
+        text: 'Bugün Günün Karesi benim! Sen de grubunu kur: ${AppConfig.webUrl}',
       );
     } catch (e) {
       if (mounted) showError(context, 'Paylaşılamadı: $e');

@@ -79,7 +79,7 @@ class _CreateSheetState extends State<_CreateSheet> {
   void _share(Group g) {
     Share.share(
       'Şipşak\'ta grubuma katıl! Her gün bir an, bir saat, tek kazanan.\n\n'
-      'Grup: ${g.name}\nKod: ${g.code}\n\nUygulamayı indir: ${AppConfig.downloadUrl}',
+      'Grup: ${g.name}\nKod: ${g.code}\n\nUygulamayı al:\n${AppConfig.getAppText}',
     );
   }
 

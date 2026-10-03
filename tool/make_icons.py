@@ -63,3 +63,28 @@ for name, k in DENSITIES.items():
 
 launcher(512).save(ROOT.parent / "icon_512.png")
 print("ikonlar hazır:", ROOT)
+
+
+# ---------- web (PWA) ikonları ----------
+WEB = Path(__file__).resolve().parent.parent / "web"
+(WEB / "icons").mkdir(parents=True, exist_ok=True)
+
+
+def full_bleed(px, bolt_ratio):
+    """Köşesiz, şeffaflıksız kare: iOS ve Android köşeleri kendisi yuvarlar."""
+    scale = 8
+    big = px * scale
+    img = Image.new("RGBA", (big, big), FLASH)
+    d = ImageDraw.Draw(img)
+    s = big * bolt_ratio
+    bolt(big, ((big - s) / 2, (big - s) / 2, s), INK, d)
+    return img.resize((px, px), Image.LANCZOS).convert("RGB")
+
+
+launcher(192).save(WEB / "icons" / "Icon-192.png")
+launcher(512).save(WEB / "icons" / "Icon-512.png")
+full_bleed(192, 0.5).save(WEB / "icons" / "Icon-maskable-192.png")
+full_bleed(512, 0.5).save(WEB / "icons" / "Icon-maskable-512.png")
+full_bleed(180, 0.62).save(WEB / "icons" / "apple-touch-icon.png")
+launcher(64).save(WEB / "favicon.png")
+print("web ikonları hazır:", WEB)

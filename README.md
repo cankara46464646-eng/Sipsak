@@ -9,9 +9,10 @@ Her gün 10:00 ile 18:00 arasında rastgele bir anda Türkiye'deki herkese aynı
 
 ## İndir
 
-Son sürüm: **[sipsak.apk](../../releases/latest/download/sipsak.apk)**
-
-Telefonda linke dokun, indir, aç ve kur. Android "bilinmeyen kaynak" izni isterse ver.
+- **iPhone (ve her tarayıcı):** https://cankara46464646-eng.github.io/Sipsak/
+  Safari'de aç → alttaki **Paylaş** → **Ana Ekrana Ekle**. Uygulama gibi tam ekran açılır.
+- **Android:** **[sipsak.apk](../../releases/latest/download/sipsak.apk)**
+  Linke dokun, indir, aç ve kur. "Bilinmeyen kaynak" izni isterse ver.
 
 ## Modlar
 

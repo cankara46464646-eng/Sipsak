@@ -111,7 +111,7 @@ class _GroupScreenState extends State<GroupScreen> {
 
   void _invite() {
     final text = 'Şipşak\'ta grubuma katıl! Her gün bir an, bir saat, tek kazanan.\n\n'
-        'Grup: ${g.name}\nKod: ${g.code}\n\nUygulamayı indir: ${AppConfig.downloadUrl}';
+        'Grup: ${g.name}\nKod: ${g.code}\n\nUygulamayı al:\n${AppConfig.getAppText}';
     Share.share(text);
   }
 

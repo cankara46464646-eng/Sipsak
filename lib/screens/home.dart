@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../clock.dart';
 import '../models.dart';
 import '../services/app_state.dart';
+import '../services/notifications.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import 'group.dart';
@@ -264,7 +265,9 @@ class _TodayCard extends StatelessWidget {
               Text('Bugünün Şipşak\'ı henüz gelmedi', style: display(26)),
               const SizedBox(height: 8),
               Text(
-                '10:00 ile 18:00 arasında bir an gelecek. Tema da o an açılacak. Bildirimleri açık tut.',
+                Notifs.supported
+                    ? '10:00 ile 18:00 arasında bir an gelecek. Tema da o an açılacak. Bildirimleri açık tut.'
+                    : '10:00 ile 18:00 arasında bir an gelecek. Tema da o an açılacak. Arada bir uygulamaya bak!',
                 style: body(14, color: C.muted),
               ),
             ],
