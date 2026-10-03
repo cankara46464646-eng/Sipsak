@@ -125,10 +125,14 @@ class DemoBackend implements Backend {
     required bool late,
   }) async {
     await Future<void>.delayed(const Duration(milliseconds: 400));
+    // Demo'da zaman simüle edildiği için senin karen Şipşak anından
+    // 15 dakika (geç kaldıysan 75 dakika) sonra çekilmiş sayılır.
+    final s = DaySchedule.today();
+    final momentEpoch = s.moment.subtract(const Duration(hours: 3)).millisecondsSinceEpoch;
     final post = Post(
       uid: uid,
       name: name,
-      createdAt: DateTime.now().millisecondsSinceEpoch,
+      createdAt: momentEpoch + (late ? 75 : 15) * 60000,
       late: late,
       bytes: jpeg,
     );
@@ -148,7 +152,7 @@ class DemoBackend implements Backend {
       out['e'] = 'z';
       out['b'] = mine ? meId : 'z';
       out['l'] = mine ? meId : 'b';
-      out['d'] = 'z';
+      out['d'] = mine ? meId : 'z';
     }
     final myVote = _myVotes['$groupId|$dayKey'];
     if (myVote != null) out[meId] = myVote;

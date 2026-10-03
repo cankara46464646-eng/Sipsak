@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: _StatTile(
                           icon: const CrownIcon(size: 22, color: C.flash),
                           value: '${app.crownsThisMonth} taç',
-                          label: 'Bu ay kazandığın',
+                          label: 'Bu ay',
                         ),
                       ),
                     ],
